@@ -1,0 +1,97 @@
+---
+title: CV
+name: Daniel J.
+surname: Hicks
+position: "Assistant Professor of Philosophy"
+address: "University of California, Merced"
+www: dhicks.github.io
+email: "dhicks4@ucmerced.edu"
+github: dhicks
+date: "`r format(Sys.time(), '%B %Y')`"
+aboutme: "aboutmetext"
+output: 
+  vitae::markdowncv:
+      theme: "davewhipp"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(vitae)
+library(fontawesome)
+```
+
+## Areas of interest
+
+**Philosophy**: 
+philosophy of science, ethics, social and political philosophy
+
+**Science and Technology Studies**: 
+science policy, environmental policy
+
+**Data Science**: 
+text mining, bibliometrics, philosophy of statistical modeling
+
+
+## Professional appointments
+
+```{r}
+tribble(
+    ~ title, ~ year, ~ department, ~ institution, 
+    'Assistant Professor of Philosophy', '2019-', 'Department of Cognitive & Information Sciences', 'University of California, Merced', 
+    'Postdoctoral Researcher', '2017-2019', 'Data Science Intiative', 'University of California, Davis', 
+    'Science and Technology Policy Fellow', '2015-2017', '2015-16: Hosted by the Environmental Protection
+Agency, Chemical Safety for Sustainability Program; 2016-17: Hosted by the National Science Foundation,
+National Robotics Initiative', 'American Assocation for the Advancement of Science',
+    'Postdoctoral Fellow', '2013-2015', 'Rotman Institute of Philosophy', 'University of Western Ontario', 
+    'Postdoctoral Fellow', '2012-2013', 'College of Arts and Letters and Department of Philosophy', 'University of Notre Dame'
+) |> 
+    detailed_entries(institution, year, department, title)
+```
+
+## Education
+
+```{r}
+tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  'PhD, Philosophy', 2012, 'University of Notre Dame', 'Notre Dame, IN',
+  'MS, Mathematics', 2003, 'University of Illinois, Chicago', 'Chicago, IL',
+  'BS, Mathematics + Politics and Government', 2002, 'University of Puget Sound', 'Tacoma, WA'
+  ) %>% 
+  detailed_entries(Institution, Year, Where, Degree)
+```
+
+
+## Peer-reviewed publications
+
+```{r}
+## From <https://stackoverflow.com/questions/22870198/is-there-a-more-efficient-way-to-replace-null-with-na-in-a-list/49539022#49539022>
+replace_x <- function(x, replacement = NA_character_) {
+    if (length(x) == 0 || length(x[[1]]) == 0) {
+        replacement
+    } else {
+        x
+    }
+}
+
+bibliography_entries("peer_reviewed.bib") |> 
+    mutate(issued = modify_depth(issued, 1, replace_x)) |> 
+    arrange(desc(issued))
+```
+
+## Other scholarly products
+
+```{r}
+bibliography_entries("other_scholarly.bib") |> 
+    mutate(issued = modify_depth(issued, 1, replace_x)) |> 
+    arrange(desc(issued))
+```
+
+## Public talks and publications
+
+```{r}
+bibliography_entries("public.bib") |> 
+    mutate(issued = modify_depth(issued, 1, replace_x)) |> 
+    arrange(desc(issued))
+```
+
