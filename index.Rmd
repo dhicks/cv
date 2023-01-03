@@ -38,7 +38,7 @@ text mining, bibliometrics, philosophy of statistical modeling
 ```{r}
 tribble(
     ~ title, ~ year, ~ department, ~ institution, 
-    'Assistant Professor of Philosophy', '2019-', 'Department of Cognitive & Information Sciences', 'University of California, Merced', 
+    'Assistant Professor of Philosophy', '2019-', 'Department of Cognitive & Information Sciences; Affiliate Faculty, Public Health Graduate Group; Affiliate Faculty, Health Sciences Research Institute', 'University of California, Merced', 
     'Postdoctoral Researcher', '2017-2019', 'Data Science Intiative', 'University of California, Davis', 
     'Science and Technology Policy Fellow', '2015-2017', '2015-16: Hosted by the Environmental Protection
 Agency, Chemical Safety for Sustainability Program; 2016-17: Hosted by the National Science Foundation,
