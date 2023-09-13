@@ -2,11 +2,10 @@
 title: CV
 name: Daniel J.
 surname: Hicks
-position: "Assistant Professor of Philosophy"
+position: "Associate Professor of Philosophy"
 address: "University of California, Merced"
 www: dhicks.github.io
 email: "dhicks4@ucmerced.edu"
-github: dhicks
 date: "`r format(Sys.time(), '%B %Y')`"
 aboutme: "aboutmetext"
 output: 
@@ -38,7 +37,8 @@ text mining, bibliometrics, philosophy of statistical modeling
 ```{r}
 tribble(
     ~ title, ~ year, ~ department, ~ institution, 
-    'Assistant Professor of Philosophy', '2019-', 'Department of Cognitive & Information Sciences; Affiliate Faculty, Public Health Graduate Group; Affiliate Faculty, Health Sciences Research Institute', 'University of California, Merced', 
+    'Associate Professor of Philosophy', '2023-', 'Department of Philosophy; Affiliate Faculty, Public Health Graduate Group; Affiliate Faculty, Health Sciences Research Institute', 'University of California, Merced', 
+    'Assistant Professor of Philosophy', '2019-2023', 'Department of Cognitive Science', 'University of California, Merced',
     'Postdoctoral Researcher', '2017-2019', 'Data Science Intiative', 'University of California, Davis', 
     'Science and Technology Policy Fellow', '2015-2017', '2015-16: Hosted by the Environmental Protection
 Agency, Chemical Safety for Sustainability Program; 2016-17: Hosted by the National Science Foundation,
@@ -62,6 +62,7 @@ tribble(
 ```
 
 
+
 ## Peer-reviewed publications
 
 ```{r}
@@ -79,6 +80,7 @@ bibliography_entries("peer_reviewed.bib") |>
     arrange(desc(issued))
 ```
 
+
 ## Other scholarly products
 
 ```{r}
@@ -87,6 +89,7 @@ bibliography_entries("other_scholarly.bib") |>
     arrange(desc(issued))
 ```
 
+
 ## Public talks and publications
 
 ```{r}
@@ -94,4 +97,14 @@ bibliography_entries("public.bib") |>
     mutate(issued = modify_depth(issued, 1, replace_x)) |> 
     arrange(desc(issued))
 ```
+
+
+## Students
+
+- Emilio Lobato (UC Merced, Ph.D., co-advisor)
+- Daisy Underhill (UC Davis, Ph.D., prospectus committee member)
+- Aaron Chavez (UC Davis, Ph.D., prospectus committee member)
+- Dennis Perez (UC Merced, M.A., committee member)
+- Anthony Sainez (UC Merced, undergraduate, research supervisor)
+- Kaeda Sabrewing (UC Merced, undergraduate, research supervisor)
 
