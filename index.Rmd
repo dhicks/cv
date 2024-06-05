@@ -2,15 +2,19 @@
 title: CV
 name: Daniel J.
 surname: Hicks
+pronouns: "they/them"
 position: "Associate Professor of Philosophy"
 address: "University of California, Merced"
 www: dhicks.github.io
+orcid: 0000-0001-7945-4416
 email: "dhicks4@ucmerced.edu"
 date: "`r format(Sys.time(), '%B %Y')`"
 aboutme: "aboutmetext"
+css: "theme.css"
 output: 
   vitae::markdowncv:
-      theme: "davewhipp"
+      theme: "kjhealy"
+      keep_md: true
 ---
 
 ```{r setup, include=FALSE}
@@ -18,6 +22,11 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(tidyverse)
 library(vitae)
 library(fontawesome)
+library(googlesheets4)
+
+format_dates = function(x) {
+    mutate(x, when = stamp('October 1981', orders = 'BY')(when))
+}
 ```
 
 ## Areas of interest
@@ -37,6 +46,7 @@ text mining, bibliometrics, philosophy of statistical modeling
 ```{r}
 tribble(
     ~ title, ~ year, ~ department, ~ institution, 
+    'Department Chair', '2023-', 'Department of Philosophy', 'University of California, Merced',
     'Associate Professor of Philosophy', '2023-', 'Department of Philosophy; Affiliate Faculty, Public Health Graduate Group; Affiliate Faculty, Health Sciences Research Institute', 'University of California, Merced', 
     'Assistant Professor of Philosophy', '2019-2023', 'Department of Cognitive Science', 'University of California, Merced',
     'Postdoctoral Researcher', '2017-2019', 'Data Science Intiative', 'University of California, Davis', 
@@ -90,12 +100,31 @@ bibliography_entries("other_scholarly.bib") |>
 ```
 
 
-## Public talks and publications
+## General interest publications
 
 ```{r}
 bibliography_entries("public.bib") |> 
     mutate(issued = modify_depth(issued, 1, replace_x)) |> 
     arrange(desc(issued))
+```
+
+## Scholarly talks
+
+```{r}
+read_sheet('https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit#gid=0', 
+                 col_types = 'cDccc') |> 
+    detailed_entries(what = what, when = when, with = where, where = with, why = why, .protect = FALSE) |> 
+    format_dates()
+```
+
+## Public and cross-disciplinary talks
+
+```{r}
+read_sheet('https://docs.google.com/spreadsheets/d/1Ply5ydXH25Vve1U9TZ_VZLsYL2f6dJIlv2L1Uaiw4Ew/edit#gid=0', 
+           col_types = 'cDccc') |> 
+    detailed_entries(what = what, when = when, with = where, where = with, why = why, 
+                     .protect = FALSE) |> 
+    format_dates()
 ```
 
 
@@ -107,4 +136,8 @@ bibliography_entries("public.bib") |>
 - Dennis Perez (UC Merced, M.A., committee member)
 - Anthony Sainez (UC Merced, undergraduate, research supervisor)
 - Kaeda Sabrewing (UC Merced, undergraduate, research supervisor)
+- Rebecca Korf (UC Irvine, Ph.D., committee member)
+- Cosmo Campbell (UC Merced, undergraduate, research supervisor)
+- Joseph Dad (UC Merced, undergraduate, research supervisor)
+
 
