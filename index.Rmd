@@ -21,6 +21,14 @@ output:
       keep_tex: true
 ---
 
+```{r filters}
+## NB If filters result in empty sections, need to suppress these here or LaTeX will throw an error
+# pub_filter = rlang::quo()
+# talk_filter = rlang::quo()
+pub_filter = rlang::quo(as.Date(issued) >= '2022-07-01')
+talk_filter = rlang::quo(when >= '2022-07-01')
+```
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 is_pdf = knitr::is_latex_output()
@@ -32,11 +40,6 @@ library(googlesheets4)
 format_dates = function(x) {
     mutate(x, when = stamp('October 1981', orders = 'BY')(when))
 }
-
-# pub_filter = quo()
-# talk_filter = quo()
-pub_filter = quo(as.Date(issued) >= '2022-07-01')
-talk_filter = quo(when >= '2022-07-01')
 ```
 
 ## Areas of interest
