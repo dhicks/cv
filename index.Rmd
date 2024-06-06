@@ -11,14 +11,19 @@ email: "dhicks4@ucmerced.edu"
 date: "`r format(Sys.time(), '%B %Y')`"
 aboutme: "aboutmetext"
 css: "theme.css"
+bibliography: "peer_reviewed.bib"
 output: 
   vitae::markdowncv:
       theme: "kjhealy"
       keep_md: true
+  vitae::moderncv:
+      latex_engine: "xelatex"
+      keep_tex: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+is_pdf = knitr::is_latex_output()
 library(tidyverse)
 library(vitae)
 library(fontawesome)
@@ -27,6 +32,11 @@ library(googlesheets4)
 format_dates = function(x) {
     mutate(x, when = stamp('October 1981', orders = 'BY')(when))
 }
+
+# pub_filter = quo()
+# talk_filter = quo()
+pub_filter = quo(as.Date(issued) >= '2022-07-01')
+talk_filter = quo(when >= '2022-07-01')
 ```
 
 ## Areas of interest
@@ -46,7 +56,7 @@ text mining, bibliometrics, philosophy of statistical modeling
 ```{r}
 tribble(
     ~ title, ~ year, ~ department, ~ institution, 
-    'Department Chair', '2023-', 'Department of Philosophy', 'University of California, Merced',
+    'Department Chair', '2024-', 'Department of Philosophy', 'University of California, Merced',
     'Associate Professor of Philosophy', '2023-', 'Department of Philosophy; Affiliate Faculty, Public Health Graduate Group; Affiliate Faculty, Health Sciences Research Institute', 'University of California, Merced', 
     'Assistant Professor of Philosophy', '2019-2023', 'Department of Cognitive Science', 'University of California, Merced',
     'Postdoctoral Researcher', '2017-2019', 'Data Science Intiative', 'University of California, Davis', 
@@ -87,7 +97,8 @@ replace_x <- function(x, replacement = NA_character_) {
 
 bibliography_entries("peer_reviewed.bib") |> 
     mutate(issued = modify_depth(issued, 1, replace_x)) |> 
-    arrange(desc(issued))
+    arrange(desc(issued)) |> 
+    filter(!!pub_filter)
 ```
 
 
@@ -96,7 +107,8 @@ bibliography_entries("peer_reviewed.bib") |>
 ```{r}
 bibliography_entries("other_scholarly.bib") |> 
     mutate(issued = modify_depth(issued, 1, replace_x)) |> 
-    arrange(desc(issued))
+    arrange(desc(issued)) |> 
+    filter(!!pub_filter)
 ```
 
 
@@ -105,7 +117,8 @@ bibliography_entries("other_scholarly.bib") |>
 ```{r}
 bibliography_entries("public.bib") |> 
     mutate(issued = modify_depth(issued, 1, replace_x)) |> 
-    arrange(desc(issued))
+    arrange(desc(issued)) |> 
+    filter(!!pub_filter)
 ```
 
 ## Scholarly talks
@@ -113,7 +126,8 @@ bibliography_entries("public.bib") |>
 ```{r}
 read_sheet('https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit#gid=0', 
                  col_types = 'cDccc') |> 
-    detailed_entries(what = what, when = when, with = where, where = with, why = why, .protect = FALSE) |> 
+    detailed_entries(what = what, when = when, with = where, where = with, why = why, .protect = is_pdf) |> 
+    filter(!!talk_filter) |> 
     format_dates()
 ```
 
@@ -123,7 +137,8 @@ read_sheet('https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4bt
 read_sheet('https://docs.google.com/spreadsheets/d/1Ply5ydXH25Vve1U9TZ_VZLsYL2f6dJIlv2L1Uaiw4Ew/edit#gid=0', 
            col_types = 'cDccc') |> 
     detailed_entries(what = what, when = when, with = where, where = with, why = why, 
-                     .protect = FALSE) |> 
+                     .protect = is_pdf) |> 
+    filter(!!talk_filter) |> 
     format_dates()
 ```
 
