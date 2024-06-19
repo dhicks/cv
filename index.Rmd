@@ -21,7 +21,7 @@ output:
       keep_tex: true
 ---
 
-```{r filters}
+```{r filters, include=FALSE}
 ## NB If filters result in empty sections, need to suppress these here or LaTeX will throw an error
 # pub_filter = rlang::quo()
 # talk_filter = rlang::quo()
@@ -36,6 +36,7 @@ library(tidyverse)
 library(vitae)
 library(fontawesome)
 library(googlesheets4)
+library(gt)
 
 format_dates = function(x) {
     mutate(x, when = stamp('October 1981', orders = 'BY')(when))
@@ -158,4 +159,18 @@ read_sheet('https://docs.google.com/spreadsheets/d/1Ply5ydXH25Vve1U9TZ_VZLsYL2f6
 - Cosmo Campbell (UC Merced, undergraduate, research supervisor)
 - Joseph Dad (UC Merced, undergraduate, research supervisor)
 
+## Service
 
+```{r}
+read_sheet('https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit?gid=670362183#gid=670362183', 
+           sheet = 'peer review') |> 
+    replace_na(list(venue = '')) |> 
+    gt(caption = 'Peer review') |> 
+    tab_options(column_labels.hidden = TRUE)
+```
+
+```{r}
+read_sheet('https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit?gid=670362183#gid=670362183', 
+           sheet = 'service') |> 
+    detailed_entries(what, when, with, why)
+```
