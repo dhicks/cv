@@ -41,6 +41,8 @@ library(gt)
 format_dates = function(x) {
     mutate(x, when = stamp('October 1981', orders = 'BY')(when))
 }
+
+gs4_auth(email = "hicks.daniel.j@gmail.com")
 ```
 
 ## Areas of interest
@@ -147,7 +149,7 @@ read_sheet('https://docs.google.com/spreadsheets/d/1Ply5ydXH25Vve1U9TZ_VZLsYL2f6
 ```
 
 
-## Students
+## Students and mentees
 
 - Emilio Lobato (UC Merced, Ph.D., co-advisor)
 - Daisy Underhill (UC Davis, Ph.D., prospectus committee member)
@@ -159,13 +161,19 @@ read_sheet('https://docs.google.com/spreadsheets/d/1Ply5ydXH25Vve1U9TZ_VZLsYL2f6
 - Cosmo Campbell (UC Merced, undergraduate, research supervisor)
 - Joseph Dad (UC Merced, undergraduate, research supervisor)
 
+I have also mentored graduate students through the Underrepresented Philosophy of Science Scholars (UPSS) initiative of the PSA. 
+
+- Kino Zhao (UC Irvine, Ph.D.)
+- Michelle Pham (Univ. of Washington, 2020)
+
 ## Service
 
 ```{r}
 read_sheet('https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit?gid=670362183#gid=670362183', 
            sheet = 'peer review') |> 
-    replace_na(list(venue = '')) |> 
+    # replace_na(list(venue = '', count = '')) |> 
     gt(caption = 'Peer review') |> 
+    sub_missing(missing_text = '') |> 
     tab_options(column_labels.hidden = TRUE)
 ```
 
