@@ -1,17 +1,16 @@
 ---
-title: CV
-name: Daniel J.
-surname: Hicks
+title: "CV"
+name: "Dan"
+surname: "Hicks"
 pronouns: "they/them"
 position: "Associate Professor of Philosophy"
 address: "University of California, Merced"
-www: dhicks.github.io
-orcid: 0000-0001-7945-4416
+www: "dhicks.github.io"
+orcid: "0000-0001-7945-4416"
 email: "dhicks4@ucmerced.edu"
 date: "`r format(Sys.time(), '%B %Y')`"
-aboutme: "aboutmetext"
 css: "theme.css"
-bibliography: "peer_reviewed.bib"
+# bibliography: "peer_reviewed.bib"
 output: 
   vitae::markdowncv:
       theme: "kjhealy"
@@ -23,10 +22,10 @@ output:
 
 ```{r filters, include=FALSE}
 ## NB If filters result in empty sections, need to suppress these here or LaTeX will throw an error
-# pub_filter = rlang::quo()
-# talk_filter = rlang::quo()
-pub_filter = rlang::quo(as.Date(issued) >= '2022-07-01')
-talk_filter = rlang::quo(when >= '2022-07-01')
+pub_filter = rlang::quo()
+talk_filter = rlang::quo()
+# pub_filter = rlang::quo(as.Date(issued) >= '2022-07-01')
+# talk_filter = rlang::quo(when >= '2022-07-01')
 ```
 
 ```{r setup, include=FALSE}
@@ -168,7 +167,7 @@ I have also mentored graduate students through the Underrepresented Philosophy o
 
 ## Service
 
-```{r}
+```{r, include=FALSE}
 read_sheet('https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit?gid=670362183#gid=670362183', 
            sheet = 'peer review') |> 
     # replace_na(list(venue = '', count = '')) |> 

@@ -1,4 +1,4 @@
-all: html docx
+all: html pdf
 
 html: index.html
 index.html: index.Rmd *.bib
