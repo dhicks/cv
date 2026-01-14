@@ -18,6 +18,8 @@ output:
   vitae::moderncv:
       latex_engine: "xelatex"
       keep_tex: true
+      extra_dependencies: ["pgf"]
+      theme: "classic"
 ---
 
 ```{r filters, include=FALSE}
@@ -46,14 +48,11 @@ gs4_auth(email = "hicks.daniel.j@gmail.com")
 
 ## Areas of interest
 
-**Philosophy**: 
-philosophy of science, ethics, social and political philosophy
-
-**Science and Technology Studies**: 
-science policy, environmental policy
-
-**Data Science**: 
-text mining, bibliometrics, philosophy of statistical modeling
+|                                    |   |                                                                |
+|-----------------------------------:|---|----------------------------------------------------------------|
+| **Philosophy**                     |   | philosophy of science, ethics, social and political philosophy |
+| **Science and Technology Studies** |   | science for policy, environmental policy                       |
+| **Data Science**                   |   | text mining, bibliometrics, philosophy of statistical practice |
 
 
 ## Professional appointments
@@ -151,14 +150,15 @@ read_sheet('https://docs.google.com/spreadsheets/d/1Ply5ydXH25Vve1U9TZ_VZLsYL2f6
 ## Students and mentees
 
 - Emilio Lobato (UC Merced, Ph.D., co-advisor)
-- Daisy Underhill (UC Davis, Ph.D., prospectus committee member)
-- Aaron Chavez (UC Davis, Ph.D., prospectus committee member)
+- Daisy Underhill (UC Davis, Ph.D., committee member)
+- Aaron Chavez (UC Davis, Ph.D., committee member)
 - Dennis Perez (UC Merced, M.A., committee member)
 - Anthony Sainez (UC Merced, undergraduate, research supervisor)
 - Kaeda Sabrewing (UC Merced, undergraduate, research supervisor)
 - Rebecca Korf (UC Irvine, Ph.D., committee member)
 - Cosmo Campbell (UC Merced, undergraduate, research supervisor)
 - Joseph Dad (UC Merced, undergraduate, research supervisor)
+- Danna Valenzuela (UC Merced, undergraduate, research supervisor)
 
 I have also mentored graduate students through the Underrepresented Philosophy of Science Scholars (UPSS) initiative of the PSA. 
 
