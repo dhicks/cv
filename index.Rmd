@@ -48,12 +48,15 @@ gs4_auth(email = "hicks.daniel.j@gmail.com")
 
 ## Areas of interest
 
-|                                    |   |                                                                |
-|-----------------------------------:|---|----------------------------------------------------------------|
-| **Philosophy**                     |   | philosophy of science, ethics, social and political philosophy |
-| **Science and Technology Studies** |   | science for policy, environmental policy                       |
-| **Data Science**                   |   | text mining, bibliometrics, philosophy of statistical practice |
+<!-- |                                    |   |                                                                | -->
+<!-- |-----------------------------------:|---|----------------------------------------------------------------| -->
+<!-- | **Philosophy**                     |   | philosophy of science, ethics, social and political philosophy | -->
+<!-- | **Science and Technology Studies** |   | science for policy, environmental policy                       | -->
+<!-- | **Data Science**                   |   | text mining, bibliometrics, philosophy of statistical practice | -->
 
+- **Philosophy:** philosophy of science, ethics, social and political philosophy
+- **Science and Technology Studies:** science for policy, environmental policy
+- **Data Science:** text mining, bibliometrics, philosophy of statistical practice
 
 ## Professional appointments
 
