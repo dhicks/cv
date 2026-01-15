@@ -1,6 +1,6 @@
 ---
 title: "CV"
-name: "Dan"
+name: "D."
 surname: "Hicks"
 pronouns: "they/them"
 position: "Associate Professor of Philosophy"
