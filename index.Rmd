@@ -74,7 +74,7 @@ National Robotics Initiative', 'American Assocation for the Advancement of Scien
     'Postdoctoral Fellow', '2013-2015', 'Rotman Institute of Philosophy', 'University of Western Ontario', 
     'Postdoctoral Fellow', '2012-2013', 'College of Arts and Letters and Department of Philosophy', 'University of Notre Dame'
 ) |>
-      detailed_entries(institution, year, department, title)
+      detailed_entries(title, year, department, institution)
 ```
 
 ## Education
@@ -86,7 +86,7 @@ tribble(
       'MS, Mathematics'                           ,  2003 , 'University of Illinois, Chicago' , 'Chicago, IL'    ,
       'BS, Mathematics + Politics and Government' ,  2002 , 'University of Puget Sound'       , 'Tacoma, WA'
 ) %>%
-      detailed_entries(Institution, Year, Where, Degree)
+      detailed_entries(Degree, Year, Institution, Where)
 ```
 
 
