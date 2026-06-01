@@ -400,6 +400,7 @@
 \newcommand*{\recomputefootlengths}{\recomputecvfootlengths}
 \newcommand*{\recomputelengths}{\recomputecvlengths}
 \AtBeginDocument{\recomputelengths{}}
+\AtBeginDocument{\raggedright}
 
 % creates a command if not yet defined
 \newcommand*{\@initializecommand}[2]{%

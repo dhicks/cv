@@ -11,7 +11,7 @@ email: "dhicks4@ucmerced.edu"
 date: "`r format(Sys.time(), '%B %Y')`"
 css: "theme.css"
 # bibliography: "peer_reviewed.bib"
-output: 
+output:
   vitae::markdowncv:
       theme: "kjhealy"
       keep_md: true
@@ -20,6 +20,8 @@ output:
       keep_tex: true
       extra_dependencies: ["pgf"]
       theme: "classic"
+      includes:
+          in_header: "preamble.tex"
 ---
 
 ```{r filters, include=FALSE}
@@ -40,13 +42,13 @@ library(googlesheets4)
 library(gt)
 
 format_dates = function(x) {
-    mutate(x, when = stamp('October 1981', orders = 'BY')(when))
+      mutate(x, when = stamp('October 1981', orders = 'BY')(when))
 }
 
 gs4_auth(email = "hicks.daniel.j@gmail.com")
 ```
 
-## Areas of interest
+## Areas of expertise
 
 <!-- |                                    |   |                                                                | -->
 <!-- |-----------------------------------:|---|----------------------------------------------------------------| -->
@@ -63,7 +65,6 @@ gs4_auth(email = "hicks.daniel.j@gmail.com")
 ```{r}
 tribble(
     ~ title, ~ year, ~ department, ~ institution, 
-    'Department Chair', '2024-', 'Department of Philosophy', 'University of California, Merced',
     'Associate Professor of Philosophy', '2023-', 'Department of Philosophy; Affiliate Faculty, Public Health Graduate Group; Affiliate Faculty, Health Sciences Research Institute', 'University of California, Merced', 
     'Assistant Professor of Philosophy', '2019-2023', 'Department of Cognitive Science', 'University of California, Merced',
     'Postdoctoral Researcher', '2017-2019', 'Data Science Intiative', 'University of California, Davis', 
@@ -72,20 +73,20 @@ Agency, Chemical Safety for Sustainability Program; 2016-17: Hosted by the Natio
 National Robotics Initiative', 'American Assocation for the Advancement of Science',
     'Postdoctoral Fellow', '2013-2015', 'Rotman Institute of Philosophy', 'University of Western Ontario', 
     'Postdoctoral Fellow', '2012-2013', 'College of Arts and Letters and Department of Philosophy', 'University of Notre Dame'
-) |> 
-    detailed_entries(institution, year, department, title)
+) |>
+      detailed_entries(institution, year, department, title)
 ```
 
 ## Education
 
 ```{r}
 tribble(
-  ~ Degree, ~ Year, ~ Institution, ~ Where,
-  'PhD, Philosophy', 2012, 'University of Notre Dame', 'Notre Dame, IN',
-  'MS, Mathematics', 2003, 'University of Illinois, Chicago', 'Chicago, IL',
-  'BS, Mathematics + Politics and Government', 2002, 'University of Puget Sound', 'Tacoma, WA'
-  ) %>% 
-  detailed_entries(Institution, Year, Where, Degree)
+      ~Degree                                     , ~Year , ~Institution                      , ~Where           ,
+      'PhD, Philosophy'                           ,  2012 , 'University of Notre Dame'        , 'Notre Dame, IN' ,
+      'MS, Mathematics'                           ,  2003 , 'University of Illinois, Chicago' , 'Chicago, IL'    ,
+      'BS, Mathematics + Politics and Government' ,  2002 , 'University of Puget Sound'       , 'Tacoma, WA'
+) %>%
+      detailed_entries(Institution, Year, Where, Degree)
 ```
 
 
@@ -95,58 +96,75 @@ tribble(
 ```{r}
 ## From <https://stackoverflow.com/questions/22870198/is-there-a-more-efficient-way-to-replace-null-with-na-in-a-list/49539022#49539022>
 replace_x <- function(x, replacement = NA_character_) {
-    if (length(x) == 0 || length(x[[1]]) == 0) {
-        replacement
-    } else {
-        x
-    }
+      if (length(x) == 0 || length(x[[1]]) == 0) {
+            replacement
+      } else {
+            x
+      }
 }
 
-bibliography_entries("peer_reviewed.bib") |> 
-    mutate(issued = modify_depth(issued, 1, replace_x)) |> 
-    arrange(desc(issued)) |> 
-    filter(!!pub_filter)
+bibliography_entries("peer_reviewed.bib") |>
+      mutate(issued = modify_depth(issued, 1, replace_x)) |>
+      arrange(desc(issued)) |>
+      filter(!!pub_filter)
 ```
 
 
 ## Other scholarly products
 
 ```{r}
-bibliography_entries("other_scholarly.bib") |> 
-    mutate(issued = modify_depth(issued, 1, replace_x)) |> 
-    arrange(desc(issued)) |> 
-    filter(!!pub_filter)
+bibliography_entries("other_scholarly.bib") |>
+      mutate(issued = modify_depth(issued, 1, replace_x)) |>
+      arrange(desc(issued)) |>
+      filter(!!pub_filter)
 ```
 
 
 ## General interest publications
 
 ```{r}
-bibliography_entries("public.bib") |> 
-    mutate(issued = modify_depth(issued, 1, replace_x)) |> 
-    arrange(desc(issued)) |> 
-    filter(!!pub_filter)
+bibliography_entries("public.bib") |>
+      mutate(issued = modify_depth(issued, 1, replace_x)) |>
+      arrange(desc(issued)) |>
+      filter(!!pub_filter)
 ```
 
 ## Scholarly talks
 
 ```{r}
-read_sheet('https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit#gid=0', 
-                 col_types = 'cDccc') |> 
-    detailed_entries(what = what, when = when, with = where, where = with, why = why, .protect = is_pdf) |> 
-    filter(!!talk_filter) |> 
-    format_dates()
+read_sheet(
+      'https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit#gid=0',
+      col_types = 'cDccc'
+) |>
+      detailed_entries(
+            what = what,
+            when = when,
+            with = where,
+            where = with,
+            why = why,
+            .protect = is_pdf
+      ) |>
+      filter(!!talk_filter) |>
+      format_dates()
 ```
 
 ## Public and cross-disciplinary talks
 
 ```{r}
-read_sheet('https://docs.google.com/spreadsheets/d/1Ply5ydXH25Vve1U9TZ_VZLsYL2f6dJIlv2L1Uaiw4Ew/edit#gid=0', 
-           col_types = 'cDccc') |> 
-    detailed_entries(what = what, when = when, with = where, where = with, why = why, 
-                     .protect = is_pdf) |> 
-    filter(!!talk_filter) |> 
-    format_dates()
+read_sheet(
+      'https://docs.google.com/spreadsheets/d/1Ply5ydXH25Vve1U9TZ_VZLsYL2f6dJIlv2L1Uaiw4Ew/edit#gid=0',
+      col_types = 'cDccc'
+) |>
+      detailed_entries(
+            what = what,
+            when = when,
+            with = where,
+            where = with,
+            why = why,
+            .protect = is_pdf
+      ) |>
+      filter(!!talk_filter) |>
+      format_dates()
 ```
 
 
@@ -171,16 +189,20 @@ I have also mentored graduate students through the Underrepresented Philosophy o
 ## Service
 
 ```{r, include=FALSE}
-read_sheet('https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit?gid=670362183#gid=670362183', 
-           sheet = 'peer review') |> 
-    # replace_na(list(venue = '', count = '')) |> 
-    gt(caption = 'Peer review') |> 
-    sub_missing(missing_text = '') |> 
-    tab_options(column_labels.hidden = TRUE)
+read_sheet(
+      'https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit?gid=670362183#gid=670362183',
+      sheet = 'peer review'
+) |>
+      # replace_na(list(venue = '', count = '')) |>
+      gt(caption = 'Peer review') |>
+      sub_missing(missing_text = '') |>
+      tab_options(column_labels.hidden = TRUE)
 ```
 
 ```{r}
-read_sheet('https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit?gid=670362183#gid=670362183', 
-           sheet = 'service') |> 
-    detailed_entries(what, when, with, why)
+read_sheet(
+      'https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit?gid=670362183#gid=670362183',
+      sheet = 'service'
+) |>
+      detailed_entries(what, when, with, why)
 ```
