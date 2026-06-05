@@ -1,0 +1,24 @@
+\usepackage{ragged2e}
+% Apply ragged-right to the main document flow
+\AtBeginDocument{\RaggedRight}
+
+% Ad-hoc bullet lists aligned with the cventry content column.
+% Sets \leftmargini group-locally so the inner \begin{itemize} picks up the
+% right margin; the group closes with \end{cvbullets}.
+\newenvironment{cvbullets}{%
+  \setlength{\leftmargini}{\dimexpr\hintscolumnwidth+\separatorcolumnwidth\relax}%
+}{%
+}
+
+% Mirror the \cvitem table structure for CSL bibliography entries:
+%   \CSLLeftMargin: citation number right-aligned in the hints column
+%   \CSLRightInline: entry text in the main column, separated by \separatorcolumnwidth
+% Together they span exactly \hintscolumnwidth + \separatorcolumnwidth + \maincolumnwidth = \textwidth,
+% so citation numbers sit in the same column as dates in \cventry items.
+\AtBeginDocument{%
+  \renewcommand{\CSLLeftMargin}[1]{%
+    \parbox[t]{\hintscolumnwidth}{\raggedleft\hintstyle{#1}\strut}}%
+  \renewcommand{\CSLRightInline}[1]{%
+    \hspace*{\separatorcolumnwidth}%
+    \parbox[t]{\maincolumnwidth}{\raggedright\strut#1\strut}}%
+}

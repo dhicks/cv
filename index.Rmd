@@ -48,7 +48,7 @@ format_dates = function(x) {
 gs4_auth(email = "hicks.daniel.j@gmail.com")
 ```
 
-## Areas of expertise
+# Areas of expertise
 
 <!-- |                                    |   |                                                                | -->
 <!-- |-----------------------------------:|---|----------------------------------------------------------------| -->
@@ -56,11 +56,17 @@ gs4_auth(email = "hicks.daniel.j@gmail.com")
 <!-- | **Science and Technology Studies** |   | science for policy, environmental policy                       | -->
 <!-- | **Data Science**                   |   | text mining, bibliometrics, philosophy of statistical practice | -->
 
+```{=latex}
+\begin{cvbullets}
+```
 - **Philosophy:** philosophy of science, ethics, social and political philosophy
 - **Science and Technology Studies:** science for policy, environmental policy
 - **Data Science:** text mining, bibliometrics, philosophy of statistical practice
+```{=latex}
+\end{cvbullets}
+```
 
-## Professional appointments
+# Professional appointments
 
 ```{r}
 tribble(
@@ -77,7 +83,7 @@ National Robotics Initiative', 'American Assocation for the Advancement of Scien
       detailed_entries(title, year, department, institution)
 ```
 
-## Education
+# Education
 
 ```{r}
 tribble(
@@ -91,7 +97,7 @@ tribble(
 
 
 
-## Peer-reviewed publications
+# Peer-reviewed publications
 
 ```{r}
 ## From <https://stackoverflow.com/questions/22870198/is-there-a-more-efficient-way-to-replace-null-with-na-in-a-list/49539022#49539022>
@@ -110,7 +116,7 @@ bibliography_entries("peer_reviewed.bib") |>
 ```
 
 
-## Other scholarly products
+# Other scholarly products
 
 ```{r}
 bibliography_entries("other_scholarly.bib") |>
@@ -120,7 +126,7 @@ bibliography_entries("other_scholarly.bib") |>
 ```
 
 
-## General interest publications
+# General interest publications
 
 ```{r}
 bibliography_entries("public.bib") |>
@@ -129,7 +135,7 @@ bibliography_entries("public.bib") |>
       filter(!!pub_filter)
 ```
 
-## Scholarly talks
+# Scholarly talks
 
 ```{r}
 read_sheet(
@@ -148,7 +154,7 @@ read_sheet(
       format_dates()
 ```
 
-## Public and cross-disciplinary talks
+# Public and cross-disciplinary talks
 
 ```{r}
 read_sheet(
@@ -168,35 +174,59 @@ read_sheet(
 ```
 
 
-## Students and mentees
+# Students and mentees
 
-- Emilio Lobato (UC Merced, Ph.D., co-advisor)
+## Graduate
+
+```{=latex}
+\begin{cvbullets}
+```
 - Daisy Underhill (UC Davis, Ph.D., committee member)
-- Aaron Chavez (UC Davis, Ph.D., committee member)
-- Dennis Perez (UC Merced, M.A., committee member)
-- Anthony Sainez (UC Merced, undergraduate, research supervisor)
-- Kaeda Sabrewing (UC Merced, undergraduate, research supervisor)
-- Rebecca Korf (UC Irvine, Ph.D., committee member)
-- Cosmo Campbell (UC Merced, undergraduate, research supervisor)
-- Joseph Dad (UC Merced, undergraduate, research supervisor)
-- Danna Valenzuela (UC Merced, undergraduate, research supervisor)
+- Aaron Chavez (UC Davis, Ph.D., committee member; graduated 2026)
+- Rebecca Korf (UC Irvine, Ph.D., committee member; graduated 2025)
+- Emilio Lobato (UC Merced, Ph.D., co-advisor; graduated 2024)
+- Dennis Perez (UC Merced, M.A., committee member; graduated 2022)
+```{=latex}
+\end{cvbullets}
+```
 
 I have also mentored graduate students through the Underrepresented Philosophy of Science Scholars (UPSS) initiative of the PSA. 
 
-- Kino Zhao (UC Irvine, Ph.D.)
-- Michelle Pham (Univ. of Washington, 2020)
+```{=latex}
+\begin{cvbullets}
+```
+- Kino Zhao (UC Irvine, Ph.D. 2021)
+- Michelle Pham (Univ. of Washington, Ph.D. 2020)
+```{=latex}
+\end{cvbullets}
+```
 
-## Service
+## Undergraduate
+
+```{=latex}
+\begin{cvbullets}
+```
+- Danna Valenzuela (UC Merced, undergraduate, research supervisor)
+- Joseph Dad (UC Merced, undergraduate, research supervisor)
+- Cosmo Campbell (UC Merced, undergraduate, research supervisor)
+- Anthony Sainez (UC Merced, undergraduate, research supervisor)
+- Kaeda Sabrewing (UC Merced, undergraduate, research supervisor)
+```{=latex}
+\end{cvbullets}
+```
+
+
+# Service
 
 ```{r, include=FALSE}
-read_sheet(
-      'https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit?gid=670362183#gid=670362183',
-      sheet = 'peer review'
-) |>
-      # replace_na(list(venue = '', count = '')) |>
-      gt(caption = 'Peer review') |>
-      sub_missing(missing_text = '') |>
-      tab_options(column_labels.hidden = TRUE)
+# read_sheet(
+#       'https://docs.google.com/spreadsheets/d/1nKDb1e4rmZBlp_KfDAJkQKRij4btkDewAH-hB6MnxT0/edit?gid=670362183#gid=670362183',
+#       sheet = 'peer review'
+# ) |>
+#       # replace_na(list(venue = '', count = '')) |>
+#       gt(caption = 'Peer review') |>
+#       sub_missing(missing_text = '') |>
+#       tab_options(column_labels.hidden = TRUE)
 ```
 
 ```{r}
