@@ -20,6 +20,7 @@ output:
       keep_tex: true
       extra_dependencies: ["pgf"]
       theme: "classic"
+      pandoc_args: ["--lua-filter=promote-headings.lua"]
       includes:
           in_header: "preamble.tex"
 ---
@@ -48,7 +49,7 @@ format_dates = function(x) {
 gs4_auth(email = "hicks.daniel.j@gmail.com")
 ```
 
-# Areas of expertise
+## Areas of expertise
 
 <!-- |                                    |   |                                                                | -->
 <!-- |-----------------------------------:|---|----------------------------------------------------------------| -->
@@ -66,7 +67,7 @@ gs4_auth(email = "hicks.daniel.j@gmail.com")
 \end{cvbullets}
 ```
 
-# Professional appointments
+## Professional appointments
 
 ```{r}
 tribble(
@@ -83,7 +84,7 @@ National Robotics Initiative', 'American Assocation for the Advancement of Scien
       detailed_entries(title, year, department, institution)
 ```
 
-# Education
+## Education
 
 ```{r}
 tribble(
@@ -97,7 +98,7 @@ tribble(
 
 
 
-# Peer-reviewed publications
+## Peer-reviewed publications
 
 ```{r}
 ## From <https://stackoverflow.com/questions/22870198/is-there-a-more-efficient-way-to-replace-null-with-na-in-a-list/49539022#49539022>
@@ -116,7 +117,7 @@ bibliography_entries("peer_reviewed.bib") |>
 ```
 
 
-# Other scholarly products
+## Other scholarly products
 
 ```{r}
 bibliography_entries("other_scholarly.bib") |>
@@ -126,7 +127,7 @@ bibliography_entries("other_scholarly.bib") |>
 ```
 
 
-# General interest publications
+## General interest publications
 
 ```{r}
 bibliography_entries("public.bib") |>
@@ -135,7 +136,7 @@ bibliography_entries("public.bib") |>
       filter(!!pub_filter)
 ```
 
-# Scholarly talks
+## Scholarly talks
 
 ```{r}
 read_sheet(
@@ -154,7 +155,7 @@ read_sheet(
       format_dates()
 ```
 
-# Public and cross-disciplinary talks
+## Public and cross-disciplinary talks
 
 ```{r}
 read_sheet(
@@ -174,9 +175,9 @@ read_sheet(
 ```
 
 
-# Students and mentees
+## Students and mentees
 
-## Graduate
+### Graduate
 
 ```{=latex}
 \begin{cvbullets}
@@ -201,7 +202,7 @@ I have also mentored graduate students through the Underrepresented Philosophy o
 \end{cvbullets}
 ```
 
-## Undergraduate
+### Undergraduate
 
 ```{=latex}
 \begin{cvbullets}
@@ -216,7 +217,7 @@ I have also mentored graduate students through the Underrepresented Philosophy o
 ```
 
 
-# Service
+## Service
 
 ```{r, include=FALSE}
 # read_sheet(
